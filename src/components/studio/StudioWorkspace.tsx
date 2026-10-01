@@ -55,7 +55,6 @@ export function StudioWorkspace() {
     constraints,
     toggleConstraint,
     computedCcr,
-    certifiedHash,
     exportJson,
   } = useWorkflow();
 
@@ -63,7 +62,6 @@ export function StudioWorkspace() {
   const [isProcessing, startTransition] = useTransition();
   const [copiedRaw, setCopiedRaw] = useState(false);
   const [copiedGuarded, setCopiedGuarded] = useState(false);
-  const [copiedHash, setCopiedHash] = useState(false);
   const [showInspector, setShowInspector] = useState(true);
   const [showAddConstraint, setShowAddConstraint] = useState(false);
   const [newConstraintTitle, setNewConstraintTitle] = useState("");
@@ -117,17 +115,14 @@ export function StudioWorkspace() {
     });
   };
 
-  const copyToClipboard = (content: string, type: "raw" | "guarded" | "hash") => {
+  const copyToClipboard = (content: string, type: "raw" | "guarded") => {
     navigator.clipboard.writeText(content);
     if (type === "raw") {
       setCopiedRaw(true);
       setTimeout(() => setCopiedRaw(false), 2000);
-    } else if (type === "guarded") {
+    } else {
       setCopiedGuarded(true);
       setTimeout(() => setCopiedGuarded(false), 2000);
-    } else {
-      setCopiedHash(true);
-      setTimeout(() => setCopiedHash(false), 2000);
     }
     toast({ title: "تم النسخ إلى الحافظة", variant: "info" });
   };
@@ -188,33 +183,6 @@ export function StudioWorkspace() {
           </div>
         </div>
 
-        {/* Status & Trust Indicators Strip */}
-        <div className="mt-4 pt-4 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-3 text-xs text-on-surface-variant">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="flex items-center gap-1.5 text-on-surface font-semibold">
-              <Icon name="verified_user" className="text-sm text-primary" />
-              حالة الضبط الدلالي:
-            </span>
-            <span className="bg-primary/10 text-primary px-2.5 py-0.5 rounded-full font-medium">
-              نشط ومطابق للمصنفات المعتمدة
-            </span>
-            <span className="text-outline">•</span>
-            <span className="text-on-surface-variant">
-              مطابقة المعاجم الأصولية: <strong className="text-primary font-bold">100%</strong>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1 text-primary font-medium">
-              <Icon name="verified" className="text-sm" />
-              درجة الثبوت: {ragResult.doc.authenticity.split("•")[0]}
-            </span>
-            <span className="text-outline">•</span>
-            <span className="font-mono text-on-surface-variant">
-              رمز الاعتماد: {certifiedHash.slice(0, 16)}...
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* 2. Controls & Task Configuration Bar */}
@@ -706,38 +674,6 @@ export function StudioWorkspace() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Cryptographic Hash & Verification Badge */}
-          <div className="rounded-xl bg-surface-container-high/40 p-4 border border-outline-variant/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <Icon name="lock" className="text-base text-primary" />
-              <div>
-                <div className="text-xs font-bold text-on-surface">
-                  شهادة التوقيع والاعتماد الرقمي (Cryptographic Audit Certificate)
-                </div>
-                <div className="text-[11px] font-mono text-on-surface-variant mt-0.5">
-                  SHA-256 Digest: {certifiedHash}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => copyToClipboard(certifiedHash, "hash")}
-                className="px-3 py-1.5 rounded-lg bg-surface-container text-xs font-medium text-on-surface hover:bg-surface-container-high transition-colors"
-              >
-                {copiedHash ? "تم النسخ" : "نسخ الرمز"}
-              </button>
-              <button
-                type="button"
-                onClick={exportJson}
-                className="px-3.5 py-1.5 rounded-lg bg-primary text-xs font-bold text-on-primary hover:bg-primary/90 transition-colors shadow-xs"
-              >
-                تنزيل ملف الاعتماد
-              </button>
             </div>
           </div>
         </div>
