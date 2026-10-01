@@ -12,8 +12,6 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Pre-change snapshots kept by the project rules: never linted.
-    "archive/**",
   ]),
 ]);
 

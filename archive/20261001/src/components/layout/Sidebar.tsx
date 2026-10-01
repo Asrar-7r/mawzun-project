@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon } from "@/components/ui/Icon";
@@ -13,8 +13,11 @@ export function Sidebar() {
   const current = stageFromPath(pathname);
   const [isOpen, setIsOpen] = useState(false);
 
-  // The drawer only exists on mobile, so it is closed directly from the nav
-  // links instead of syncing it from an effect on `pathname`.
+  // Close the mobile drawer whenever navigation happens.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <>
       {/* Mobile drawer trigger — the sidebar itself is a fixed panel on desktop. */}
@@ -78,7 +81,6 @@ export function Sidebar() {
                 <Link
                   key={stage.slug}
                   href={stageHref(stage.slug)}
-                  onClick={() => setIsOpen(false)}
                   aria-current={isActive ? "page" : undefined}
                   className={cx(
                     "group flex items-center justify-between rounded-lg px-space-md py-space-sm transition-colors",
