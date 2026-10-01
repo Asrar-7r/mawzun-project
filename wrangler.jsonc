@@ -10,12 +10,6 @@
   "ai": {
     "binding": "AI"
   },
-  "vectorize": [
-    {
-      "binding": "VECTORIZE",
-      "index_name": "mawzun-hadith-index"
-    }
-  ],
   "observability": {
     "enabled": true
   }
