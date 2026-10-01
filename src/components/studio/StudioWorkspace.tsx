@@ -55,7 +55,6 @@ export function StudioWorkspace() {
     constraints,
     toggleConstraint,
     computedCcr,
-    exportJson,
   } = useWorkflow();
 
   const { toast } = useToast();
@@ -165,14 +164,6 @@ export function StudioWorkspace() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-            <button
-              type="button"
-              onClick={exportJson}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-surface-container-lowest px-4 py-2.5 text-sm font-medium text-on-surface border border-outline-variant hover:bg-surface-container hover:border-primary transition-all shadow-sm"
-            >
-              <Icon name="download" className="text-base text-primary" />
-              <span>تصدير شهادة التدقيق (JSON)</span>
-            </button>
             <Link
               href="/01-input"
               className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-on-primary hover:bg-primary/90 transition-all shadow-sm"
