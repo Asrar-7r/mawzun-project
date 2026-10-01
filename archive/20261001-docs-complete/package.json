@@ -8,8 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "docs:check": "node scripts/check-docs.mjs"
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.3.8",
