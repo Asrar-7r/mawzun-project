@@ -22,7 +22,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   - Run scripts: `bun run <script>`, or directly `bun dev`, `bun build`, `bun lint`
   - Execute tools: `bunx <tool>` instead of `npx`
 - The reference lockfile is `bun.lock` (committed). Never create or update `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml`.
-- The legacy npm `package-lock.json` was removed during the Bun migration (tag `pre-chore-bun-migration-2026-10-01`, snapshot at `archive/20261001/package-lock.json`) and replaced by `bun.lock` generated with `bun install`.
+- The legacy npm `package-lock.json` was removed during the Bun migration (tag `pre-chore-bun-migration-2026-10-01`) and replaced by `bun.lock` generated with `bun install`.
 - Enforcement: `package.json` declares `"packageManager": "bun@1.4.2"` and the `preinstall` guard `scripts/ensure-bun.mjs` aborts any dependency installation started by `npm`, `yarn` or `pnpm`.
 
 ## 2) Branches and the `main` branch
@@ -37,7 +37,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   ```
 - Branch naming: `<type>/<kebab-case-description>` where `type` is one of: `feat`, `fix`, `chore`, `refactor`, `docs`.
 
-## 3) Tags and archiving before any edit or deletion
+## 3) Tags (archiving system) before any edit or deletion
 
 Before editing or deleting **any** file, do the following in order:
 
@@ -45,13 +45,7 @@ Before editing or deleting **any** file, do the following in order:
    ```bash
    git tag -a pre-<scope>-<YYYY-MM-DD> -m "snapshot before <description>"
    ```
-2. **Archive the file(s)** before editing, by copying them into the archive folder while preserving their path and timestamp:
-   ```bash
-   mkdir -p archive/$(date +%Y%m%d)
-   cp --parents src/path/to/file.tsx archive/$(date +%Y%m%d)/
-   ```
-   - Never permanently delete a file without an existing archived copy.
-3. Then work on the separate branch (see section 2).
+2. Then work on the separate branch (see section 2).
 
 - The tag is the **reference** when you need to reach the previous state:
   - Compare: `git diff <tag>..HEAD`
@@ -63,9 +57,8 @@ Before editing or deleting **any** file, do the following in order:
 
 1. Ensure the tree is clean: `git status`.
 2. Create the tag — section 3.
-3. Archive the affected files — section 3.
-4. Create a separate branch — section 2 (except docs updates on `main`).
-5. Make the change using **bun** only.
-6. Verify: `bun run lint`, then `bun run build` when applicable.
-7. Commit the changes and push the branch.
+3. Create a separate branch — section 2 (except docs updates on `main`).
+4. Make the change using **bun** only.
+5. Verify: `bun run lint`, then `bun run build` when applicable.
+6. Commit the changes and push the branch.
 - Do not mix unrelated changes in the same branch or commit.
