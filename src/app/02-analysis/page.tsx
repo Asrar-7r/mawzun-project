@@ -1,70 +1,88 @@
+"use client";
+
+import { useState } from "react";
 import { PageShell } from "@/components/ui/PageShell";
 import { StageNav } from "@/components/stages/StageNav";
 import { SemanticGraphCard } from "@/components/stages/SemanticGraphCard";
 import { Icon } from "@/components/ui/Icon";
 import { cx } from "@/lib/cx";
 import { t } from "@/lib/typography";
-
-export const metadata = {
-  title: "02 التحليل | موزون",
-};
-
-const INSIGHT_CARDS = [
-  {
-    eyebrow: "تصنيف المتن والوعاء",
-    title: "نوع المحتوى",
-    icon: "menu_book",
-    iconClass: "bg-primary-fixed/40 text-primary",
-    value: "حديث نبوي شريف",
-    valueClass: "text-primary",
-    body: "تمت مطابقة السند والمتن مع صحيح البخاري، الحديث الأول في باب بدء الوحي، برواية أمير المؤمنين عمر بن الخطاب.",
-    footerIcon: "verified_user",
-    footer: "مدقق آليًا ومطابق للمصنفات الحديثية",
-    footerClass: "text-primary",
-  },
-  {
-    eyebrow: "المجال المقاصدي والفقهي",
-    title: "الموضوع",
-    icon: "category",
-    iconClass: "bg-secondary-container text-secondary",
-    value: "النِّيَّة (الإخلاص والقصد)",
-    valueClass: "text-primary",
-    body: "يقع في أصل أبواب الفقه الإسلامي: تمييز العبادات عن العادات، وتمييز رتب العبادات بعضها عن بعض، وقاعدة الأمور بمقاصدها.",
-    footerIcon: "hub",
-    footer: "تصنيف مقاصدي فقهي (العبادات والمعاملات)",
-    footerClass: "text-secondary",
-  },
-  {
-    eyebrow: "الارتباط المنطقي والسببي",
-    title: "الفكرة الأساسية",
-    icon: "link",
-    iconClass: "bg-surface-container-high text-primary-container",
-    value: "الأعمال مرتبطة بالنيات صحةً وقبولاً",
-    valueClass: "text-on-surface",
-    body: "تحديد حصر جنس العمل المعتبر شرعًا بوجود نيته وقصده، بحيث لا يترتب ثواب أو حكم استحقاقي بغير عزم الإرادة القلبية.",
-    footerIcon: "balance",
-    footer: "رابط العلة بالمعلول ومقصد العمل الشرعي",
-    footerClass: "text-primary",
-  },
-  {
-    eyebrow: "الاستحقاق والأثر التشريعي",
-    title: "المعنى الأساسي والأثر",
-    icon: "account_balance_wallet",
-    iconClass: "bg-tertiary-fixed text-tertiary",
-    value: "لكل شخص ما نواه في الجزاء والمآل",
-    valueClass: "text-on-surface",
-    body: "دلالة فردية المسؤولية وتعين الأثر الأخروي والدنيوي على وفق النية الحقيقية الباطنة، وليس فقط القالب الصوري الظاهر للعمل.",
-    footerIcon: "flag",
-    footer: "دلالة الأثر والجزاء الأخروي والدنيوي الفردي",
-    footerClass: "text-tertiary",
-  },
-] as const;
+import { useWorkflow } from "@/context/WorkflowContext";
+import { useToast } from "@/context/ToastContext";
 
 const PIPELINE = [
   { icon: "format_quote", label: "النص المدخل", className: "bg-surface-container-low", textClass: "text-on-surface", trailing: "✓" },
   { icon: "psychology", label: "الفهم الدلالي التلقائي", className: "bg-primary-fixed/30 ring-1 ring-primary/20", textClass: "text-primary font-bold", trailing: null },
   { icon: "account_tree", label: "كائن المعرفة الموزون (Knowledge Object)", className: "bg-surface-container-low", textClass: "text-on-surface-variant", trailing: "03" },
-] as const;export default function AnalysisPage() {
+] as const;
+
+export default function AnalysisPage() {
+  const { currentPreset } = useWorkflow();
+  const { toast } = useToast();
+  const [filterType, setFilterType] = useState<"all" | "core" | "legal">("all");
+
+  const insights = currentPreset.insights.filter((item, idx) => {
+    if (filterType === "all") return true;
+    if (filterType === "core") return idx === 0 || idx === 1;
+    if (filterType === "legal") return idx === 2 || idx === 3;
+    return true;
+  });
+
+  function handleExportJsonLd() {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Legislation",
+      name: currentPreset.title,
+      text: currentPreset.text,
+      inLanguage: "ar",
+      citation: currentPreset.source,
+      authenticity: currentPreset.authenticity,
+      semanticObject: {
+        domain: currentPreset.category,
+        nodes: currentPreset.graphNodes.map((n) => ({
+          name: n.title,
+          role: n.subtitle,
+          category: n.type,
+        })),
+        insights: currentPreset.insights.map((i) => ({
+          title: i.title,
+          value: i.value,
+          explanation: i.body,
+        })),
+      },
+    };
+
+    const blob = new Blob([JSON.stringify(jsonLd, null, 2)], { type: "application/ld+json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `mawzun-knowledge-object-${currentPreset.id}.jsonld`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: "تم تصدير كائن المعرفة بصيغة JSON-LD",
+      description: "تم تجهيز ملف المخطط المعياري للتضمين ونماذج المعرفة.",
+      variant: "success",
+    });
+  }
+
+  function handleToggleFilter() {
+    const next = filterType === "all" ? "core" : filterType === "core" ? "legal" : "all";
+    setFilterType(next);
+    toast({
+      title:
+        next === "all"
+          ? "عرض جميع العناصر المستخرجة"
+          : next === "core"
+            ? "تصفية: المفاهيم التأسيسية"
+            : "تصفية: الأثر الفقهي والسببي",
+      variant: "info",
+    });
+  }
+
   return (
     <PageShell>
       {/* Flow pill and editorial header */}
@@ -155,7 +173,7 @@ const PIPELINE = [
                 <Icon name="format_quote" className="text-9xl" />
               </span>
               <p className={cx(t.h2, "relative z-10 text-right font-semibold leading-relaxed tracking-tight text-on-surface")}>
-                «إنَّما الأعمالُ بالنِّيّاتِ، وإنَّما لِكُلِّ امرِئٍ ما نَوى.»
+                {currentPreset.text}
               </p>
             </div>
           </div>
@@ -164,24 +182,28 @@ const PIPELINE = [
             <span className="flex items-center gap-1.5">
               <Icon name="menu_book" className="text-sm text-outline" />
               <span className={t.labelSm}>
-                <span className="font-medium text-on-surface">المصدر:</span> صحيح البخاري (حديث 1)
+                <span className="font-medium text-on-surface">المصدر:</span> {currentPreset.source}
               </span>
             </span>
             <span className="hidden h-3 w-px bg-outline-variant sm:block" />
             <span className="flex items-center gap-1.5">
               <Icon name="shield" className="text-sm text-outline" />
               <span className={cx(t.labelSm, "font-medium text-on-surface")}>درجة الدلالة:</span>
-              <span className={cx(t.labelSm, "font-semibold text-primary")}>قطعية الثبوت والدلالة</span>
+              <span className={cx(t.labelSm, "font-semibold text-primary")}>
+                {currentPreset.authenticity}
+              </span>
             </span>
             <span className="hidden h-3 w-px bg-outline-variant sm:block" />
-            <span className={cx(t.code, "text-secondary")}>140ms</span>
+            <span className={cx(t.code, "text-secondary")}>{currentPreset.latencyMs}ms</span>
           </div>
         </div>
 
         <div className="lg:col-span-5">
           <SemanticGraphCard />
         </div>
-      </div>{/* Extracted semantic structure */}
+      </div>
+
+      {/* Extracted semantic structure */}
       <div className="flex flex-col gap-space-md">
         <div className="flex flex-col justify-between gap-space-xs sm:flex-row sm:items-center">
           <div>
@@ -193,19 +215,24 @@ const PIPELINE = [
           <div className="flex items-center gap-2">
             <button
               type="button"
+              onClick={handleToggleFilter}
               className={cx(
                 t.label,
-                "inline-flex items-center gap-1.5 rounded-lg bg-surface-container-low px-3 py-1.5 text-secondary transition-colors hover:text-on-surface",
+                "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition-colors",
+                filterType !== "all"
+                  ? "bg-primary text-on-primary font-bold shadow-xs"
+                  : "bg-surface-container-low text-secondary hover:text-on-surface",
               )}
             >
               <Icon name="filter_list" className="text-sm" />
-              تصفية العناصر
+              {filterType === "all" ? "تصفية العناصر" : filterType === "core" ? "المفاهيم التأسيسية" : "الأثر والعلة"}
             </button>
             <button
               type="button"
+              onClick={handleExportJsonLd}
               className={cx(
                 t.label,
-                "inline-flex items-center gap-1.5 rounded-lg bg-surface-container-low px-3 py-1.5 text-secondary transition-colors hover:text-on-surface",
+                "inline-flex items-center gap-1.5 rounded-lg bg-surface-container-low px-3 py-1.5 text-secondary transition-colors hover:text-on-surface hover:bg-surface-container",
               )}
             >
               <Icon name="code" className="text-sm" />
@@ -215,7 +242,7 @@ const PIPELINE = [
         </div>
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
-          {INSIGHT_CARDS.map((card) => (
+          {insights.map((card) => (
             <article
               key={card.title}
               className="group relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-lg shadow-sm transition-shadow hover:shadow-md"
@@ -251,7 +278,7 @@ const PIPELINE = [
 
               <div className="my-space-md rounded-lg bg-surface-container-low p-space-md">
                 <span className={cx(t.h2, "font-bold", card.valueClass)}>{card.value}</span>
-                <p className={cx(t.bodySm, "mt-1 text-on-surface-variant")}>{card.body}</p>
+                <p className={cx(t.bodySm, "mt-1 text-on-surface-variant leading-relaxed")}>{card.body}</p>
               </div>
 
               <div className={cx(t.labelSm, "flex items-center justify-between pt-space-xs text-on-surface-variant")}>
@@ -275,7 +302,7 @@ const PIPELINE = [
             <h4 className={cx(t.h3, "font-bold text-on-surface")}>
               جاهزية التضمين والتحويل إلى قيود حوكمة
             </h4>
-            <p className={cx(t.bodySm, "text-on-surface-variant")}>
+            <p className={cx(t.bodySm, "text-on-surface-variant mt-0.5")}>
               استكمل النظام استخراج محددات الدلالة دون أي تناقض مع المصادر التأسيسية. يمكنك الآن نقل كائن
               المعرفة إلى المرحلة الثالثة لبناء محددات الأمان التوليدي (Semantic Guardrails).
             </p>
@@ -284,7 +311,7 @@ const PIPELINE = [
       </div>
 
       <StageNav
-        status="تم استخراج 4 عناصر دلالية بدقة 0.998 • جاهز لبناء القيود"
+        status="تم استخراج عناصر البنية الدلالية بدقة 0.998 • جاهز لبناء القيود"
         hint="المرحلة التالية: صياغة واعتماد القيود الدلالية الحاكمة."
         nextLabel="انتقال إلى القيود"
       />

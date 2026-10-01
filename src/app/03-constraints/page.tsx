@@ -1,13 +1,12 @@
+"use client";
+
 import { PageShell } from "@/components/ui/PageShell";
 import { StageNav } from "@/components/stages/StageNav";
 import { ConstraintBoard } from "@/components/stages/ConstraintBoard";
 import { Icon } from "@/components/ui/Icon";
 import { cx } from "@/lib/cx";
 import { t } from "@/lib/typography";
-
-export const metadata = {
-  title: "03 القيود | موزون",
-};
+import { useWorkflow } from "@/context/WorkflowContext";
 
 const WORKFLOW_STEPS = [
   {
@@ -37,10 +36,15 @@ const WORKFLOW_STEPS = [
 ] as const;
 
 export default function ConstraintsPage() {
+  const { constraints, certifiedHash, computedCcr } = useWorkflow();
+
+  const activeCount = constraints.filter((c) => c.isActive).length;
+  const excludedCount = constraints.length - activeCount;
+
   return (
     <PageShell>
       {/* Status bar */}
-      <div className="mb-space-md flex flex-wrap items-center justify-between gap-space-sm rounded-xl bg-surface-container-lowest p-space-sm shadow-sm">
+      <div className="mb-space-md flex flex-wrap items-center justify-between gap-space-sm rounded-xl bg-surface-container-lowest p-space-sm shadow-sm border border-outline-variant/20">
         <div className="flex items-center gap-space-sm">
           <span className="flex items-center gap-1.5 rounded-lg bg-surface-container-low px-space-sm py-1">
             <span className="h-2 w-2 animate-ping rounded-full bg-primary" />
@@ -48,7 +52,9 @@ export default function ConstraintsPage() {
           </span>
           <span className="flex items-center gap-1.5 rounded-lg bg-primary-fixed/30 px-space-sm py-1 text-primary">
             <Icon name="verified" className="text-sm" filled />
-            <span className={cx(t.labelSm, "font-semibold")}>مستوى الأمان الدلالي: 100% صارم</span>
+            <span className={cx(t.labelSm, "font-semibold")}>
+              مستوى الأمان الدلالي: {activeCount >= 2 ? "100% صارم" : "تنبيه نقص القيود"}
+            </span>
           </span>
         </div>
         <div className={cx(t.labelSm, "flex items-center gap-space-sm text-on-surface-variant")}>
@@ -57,20 +63,22 @@ export default function ConstraintsPage() {
             التزامن اللحظي نشط
           </span>
           <span className="h-1 w-1 rounded-full bg-outline-variant" />
-          <span className={cx(t.code, "text-secondary")}>HASH: 4b9f..d102</span>
+          <span className={cx(t.code, "text-secondary")}>HASH: {certifiedHash.slice(0, 14)}</span>
         </div>
-      </div>{/* Workflow banner */}
+      </div>
+
+      {/* Workflow banner */}
       <div className="mb-space-lg grid grid-cols-1 gap-space-sm md:grid-cols-3">
         {WORKFLOW_STEPS.map((step) => (
           <div
             key={step.title}
             className={cx(
-              "flex items-center gap-space-sm rounded-xl p-space-md shadow-sm",
+              "flex items-center gap-space-sm rounded-xl p-space-md shadow-sm border",
               step.state === "active"
-                ? "relative overflow-hidden bg-primary-container text-on-primary-container shadow-md"
+                ? "relative overflow-hidden bg-primary-container text-on-primary-container shadow-md border-primary"
                 : step.state === "done"
-                  ? "bg-surface-container-lowest"
-                  : "bg-surface-container-lowest/70 text-on-surface-variant opacity-85",
+                  ? "bg-surface-container-lowest border-outline-variant/20"
+                  : "bg-surface-container-lowest/70 text-on-surface-variant opacity-85 border-outline-variant/20",
             )}
           >
             {step.state === "active" ? (
@@ -98,7 +106,7 @@ export default function ConstraintsPage() {
                       ? "text-primary-fixed"
                       : step.state === "done"
                         ? "text-primary"
-                        : "text-outline",
+                        : "text-secondary",
                   )}
                 >
                   {step.stage}
@@ -108,29 +116,21 @@ export default function ConstraintsPage() {
                     t.code,
                     "rounded px-1.5 py-0.5 text-[10px]",
                     step.state === "active"
-                      ? "bg-primary-fixed font-semibold text-on-primary-fixed"
+                      ? "bg-primary-fixed text-primary font-bold"
                       : step.state === "done"
-                        ? "bg-primary-fixed/30 text-primary"
-                        : "bg-surface-container text-secondary",
+                        ? "bg-surface-container text-primary font-semibold"
+                        : "bg-surface-container text-outline",
                   )}
                 >
                   {step.badge}
                 </span>
               </div>
-              <p
-                className={cx(
-                  t.body,
-                  "truncate font-semibold",
-                  step.state === "active" ? "text-surface-container-lowest" : "text-on-surface",
-                )}
-              >
-                {step.title}
-              </p>
+              <h4 className={cx(t.label, "font-bold mt-0.5 truncate")}>{step.title}</h4>
               <p
                 className={cx(
                   t.bodySm,
                   "truncate",
-                  step.state === "active" && "text-on-primary-container/90",
+                  step.state === "active" ? "text-on-primary-container/80" : "text-on-surface-variant",
                 )}
               >
                 {step.body}
@@ -156,7 +156,9 @@ export default function ConstraintsPage() {
           <div className="flex items-center gap-1.5 rounded-xl bg-surface-container-low px-space-md py-2 text-secondary">
             <Icon name="rule_folder" className="text-sm text-primary" />
             <span className={cx(t.bodySm, "font-semibold")}>مصفوفة القواعد:</span>
-            <span className={cx(t.code, "font-bold text-primary")}>4 نشطة / 0 مستثناة</span>
+            <span className={cx(t.code, "font-bold text-primary")}>
+              {activeCount} نشطة / {excludedCount} مستثناة
+            </span>
           </div>
         </div>
       </div>
@@ -164,7 +166,7 @@ export default function ConstraintsPage() {
       <ConstraintBoard />
 
       <StageNav
-        status="تم اعتماد 4 قيود دلالية حاكمة • جاهز لتقييد التحويل"
+        status={`تم اعتماد ${activeCount} قيود دلالية حاكمة • الصيانة المتوقعة ${computedCcr.after}%`}
         hint="المرحلة التالية: تطبيق القيود على مخرجات النموذج اللغوي."
         nextLabel="بدء التحويل المقيد"
       />
