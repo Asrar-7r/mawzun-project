@@ -36,6 +36,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   git switch -c feat/add-analysis-stage
   ```
 - Branch naming: `<type>/<kebab-case-description>` where `type` is one of: `feat`, `fix`, `chore`, `refactor`, `docs`.
+- No dead branches: any branch that has been merged is considered dead and distracting — delete it locally and remotely immediately after merge:
+  ```bash
+  git branch -d <branch> && git push origin --delete <branch>
+  ```
 
 ## 3) Tags (archiving system) before any edit or deletion
 
