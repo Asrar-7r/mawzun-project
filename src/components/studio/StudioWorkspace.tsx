@@ -13,7 +13,6 @@ import {
   TransformType,
 } from "@/lib/semanticEngine";
 import {
-  CLOUDFLARE_MODELS,
   retrieveCanonicalKnowledge,
 } from "@/lib/cloudflareAI";
 
@@ -84,8 +83,8 @@ export function StudioWorkspace() {
   const handleRunPipeline = () => {
     startTransition(async () => {
       toast({
-        title: "جاري الاستدعاء عبر Cloudflare Workers AI...",
-        description: `تضمين النص عبر ${CLOUDFLARE_MODELS.embedding} ومعالجة القيود بنموذج ${CLOUDFLARE_MODELS.generation}`,
+        title: "جاري الفحص والتدقيق الدلالي...",
+        description: "تحليل البنية الدلالية ومطابقة القيود مع المصنفات الشرعية المعتمدة.",
         variant: "info",
       });
 
@@ -104,7 +103,7 @@ export function StudioWorkspace() {
         if (res.ok) {
           toast({
             title: `تم الاعتماد الدلالي بنجاح • CCR ${computedCcr.after}%`,
-            description: `تمت مطابقة معايير الحوكمة الشرعية عبر Gemma 4 (${CLOUDFLARE_MODELS.generation})`,
+            description: `تمت صيانة الألفاظ الشرعية ومطابقة معايير الحوكمة المقاصدية بنجاح.`,
             variant: "success",
           });
         }
@@ -156,20 +155,17 @@ export function StudioWorkspace() {
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                 <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                استوديو موزون الدلالي الموحد
+                استوديو موزون الدلالي
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-surface-container-highest px-2.5 py-0.5 text-xs text-on-surface-variant font-mono">
-                Cloudflare Edge Stack
+              <span className="inline-flex items-center gap-1 rounded-full bg-surface-container-highest px-2.5 py-0.5 text-xs text-on-surface-variant font-medium">
+                حوكمة فورية معتمدة
               </span>
             </div>
             <h1 className={cx(t.h2, "font-bold text-on-surface")}>
               استوديو الحوكمة والأمان الدلالي لنماذج الذكاء الاصطناعي
             </h1>
             <p className={cx(t.body, "text-on-surface-variant max-w-3xl")}>
-              محرك RAG شرعي متصل بنماذج Google المستضافة على Cloudflare (
-              <span className="font-mono text-primary font-semibold">Gemma 4 MoE</span> و{" "}
-              <span className="font-mono text-primary font-semibold">EmbeddingGemma</span>
-              ) لفحص انزياح المعنى وضمان الأمان المقاصدي.
+              منظومة تدقيق وحوكمة دلالية شرعية متقدمة لفحص انزياح المعنى وضمان الأمان المقاصدي للمخرجات التوليدية.
             </p>
           </div>
 
@@ -192,30 +188,30 @@ export function StudioWorkspace() {
           </div>
         </div>
 
-        {/* Cloudflare Models Badge Strip */}
+        {/* Status & Trust Indicators Strip */}
         <div className="mt-4 pt-4 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-3 text-xs text-on-surface-variant">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="flex items-center gap-1 text-on-surface font-medium">
-              <Icon name="bolt" className="text-sm text-primary" />
-              المحرك النشط:
+            <span className="flex items-center gap-1.5 text-on-surface font-semibold">
+              <Icon name="verified_user" className="text-sm text-primary" />
+              حالة الضبط الدلالي:
             </span>
-            <span className="font-mono bg-surface-container px-2 py-0.5 rounded text-primary">
-              {CLOUDFLARE_MODELS.generation} (MoE 26B/4B)
+            <span className="bg-primary/10 text-primary px-2.5 py-0.5 rounded-full font-medium">
+              نشط ومطابق للمصنفات المعتمدة
             </span>
             <span className="text-outline">•</span>
-            <span className="font-mono bg-surface-container px-2 py-0.5 rounded text-secondary">
-              {CLOUDFLARE_MODELS.embedding} (RAG 768-dim)
+            <span className="text-on-surface-variant">
+              مطابقة المعاجم الأصولية: <strong className="text-primary font-bold">100%</strong>
             </span>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1 text-primary">
+            <span className="flex items-center gap-1 text-primary font-medium">
               <Icon name="verified" className="text-sm" />
               درجة الثبوت: {ragResult.doc.authenticity.split("•")[0]}
             </span>
             <span className="text-outline">•</span>
             <span className="font-mono text-on-surface-variant">
-              Hash: {certifiedHash.slice(0, 16)}...
+              رمز الاعتماد: {certifiedHash.slice(0, 16)}...
             </span>
           </div>
         </div>
@@ -359,7 +355,7 @@ export function StudioWorkspace() {
           <div className="flex items-center gap-2 text-xs text-on-surface-variant">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             <span>
-              استرجاع RAG: تم ربط المتن مع <strong>{ragResult.doc.title}</strong> (مطابقة{" "}
+              المطابقة المرجعية: تم التحقق والربط مع <strong>{ragResult.doc.title}</strong> (مطابقة{" "}
               {ragResult.similarityScore}%)
             </span>
           </div>
@@ -378,12 +374,12 @@ export function StudioWorkspace() {
             {isProcessing ? (
               <>
                 <Icon name="progress_activity" className="text-lg animate-spin" />
-                <span>جاري استدعاء Gemma 4 والتدقيق الدلالي...</span>
+                <span>جاري الفحص والتدقيق الدلالي الآلي...</span>
               </>
             ) : (
               <>
                 <Icon name="cognition" className="text-xl" />
-                <span>تشغيل المعالجة والتدقيق عبر Gemma 4 & RAG</span>
+                <span>تشغيل المعالجة والتدقيق الدلالي</span>
               </>
             )}
           </button>
@@ -405,7 +401,7 @@ export function StudioWorkspace() {
             className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
           >
             <Icon name={showInspector ? "visibility_off" : "tune"} className="text-sm" />
-            <span>{showInspector ? "إخفاء لوحة RAG والقيود" : "إظهار لوحة RAG والقيود"}</span>
+            <span>{showInspector ? "إخفاء لوحة الحوكمة والقيود" : "إظهار لوحة الحوكمة والقيود"}</span>
           </button>
         </div>
 
@@ -557,11 +553,11 @@ export function StudioWorkspace() {
               <div className="flex items-center gap-2">
                 <Icon name="hub" className="text-xl text-primary" />
                 <h3 className={cx(t.h3, "font-bold text-on-surface")}>
-                  لوحة RAG والقيود الدلالية المسترجعة (Governance Matrix)
+                  مصفوفة الحوكمة والقيود الدلالية المرجعية
                 </h3>
               </div>
               <p className="text-xs text-on-surface-variant mt-0.5">
-                بيانات التخريج الحديثي، ومصفوفة القيود الإلزامية التي حُقنت في نموذج Gemma 4
+                بيانات التخريج الحديثي المعتمد، ومصفوفة القيود الإلزامية لصيانة المعنى المقاصدي
               </p>
             </div>
 

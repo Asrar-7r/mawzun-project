@@ -90,17 +90,17 @@ export function Sidebar() {
                       : "text-primary",
                   )}
                 />
-                <span className={t.labelSm}>الاستوديو الموحد (AI & RAG)</span>
+                <span className={t.labelSm}>الاستوديو الموحد</span>
               </span>
               <span
                 className={cx(
-                  "rounded px-1.5 py-0.5 text-[10px] font-bold font-mono",
+                  "rounded px-1.5 py-0.5 text-[10px] font-bold",
                   pathname === "/" || pathname === "/studio"
                     ? "bg-on-primary/20 text-on-primary"
                     : "bg-primary-fixed/50 text-primary-container",
                 )}
               >
-                Gemma 4
+                الرئيسية
               </span>
             </Link>
 

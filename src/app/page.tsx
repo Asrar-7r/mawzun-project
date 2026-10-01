@@ -2,9 +2,9 @@ import { PageShell } from "@/components/ui/PageShell";
 import { StudioWorkspace } from "@/components/studio/StudioWorkspace";
 
 export const metadata = {
-  title: "موزون | استوديو الحوكمة والأمان الدلالي (Gemma 4 & RAG)",
+  title: "موزون | استوديو الحوكمة والأمان الدلالي",
   description:
-    "منصة الحوكمة الدلالية لنماذج الذكاء الاصطناعي التوليدي عبر Cloudflare Workers AI و RAG الشرعي.",
+    "منظومة الحوكمة والأمان الدلالي لنماذج الذكاء الاصطناعي التوليدي عند التعامل مع المحتوى الإسلامي.",
 };
 
 export default function Home() {

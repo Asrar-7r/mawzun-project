@@ -2,9 +2,9 @@ import { PageShell } from "@/components/ui/PageShell";
 import { StudioWorkspace } from "@/components/studio/StudioWorkspace";
 
 export const metadata = {
-  title: "استوديو موزون الدلالي | Cloudflare Gemma 4 & RAG",
+  title: "استوديو موزون الدلالي | الحوكمة الشرعية",
   description:
-    "استوديو موحد ورشيق للحوكمة الدلالية والأمان المقاصدي لنماذج الذكاء الاصطناعي التوليدي عبر Cloudflare Workers AI.",
+    "استوديو موحد ورشيق للحوكمة الدلالية والأمان المقاصدي لنماذج الذكاء الاصطناعي التوليدي.",
 };
 
 export default function StudioPage() {

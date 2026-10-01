@@ -70,7 +70,7 @@ export function TopBar() {
             <Icon name="chevron_left" className="text-sm text-outline" />
             <span className="font-semibold text-primary">
               {pathname === "/" || pathname === "/studio"
-                ? "الاستوديو الموحد (Gemma 4 & RAG)"
+                ? "استوديو الحوكمة الدلالية"
                 : `${current.ordinal} ${current.title}`}
             </span>
           </div>
