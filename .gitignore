@@ -30,6 +30,11 @@
 *.tsbuildinfo
 next-env.d.ts
 
+# cloudflare / opennext
+/.open-next/
+/.wrangler/
+cloudflare-env.d.ts
+
 # local tooling / agent config (contains machine-specific absolute paths)
 .mcp.json
 .claude/
