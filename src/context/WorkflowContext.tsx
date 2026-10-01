@@ -107,13 +107,8 @@ export function WorkflowProvider({ children }: { children: ReactNode }) {
       setTextState(found.text);
       setConstraints(found.constraints);
       setRecheckPassed(true);
-      toast({
-        title: `تم اختيار المتن: ${found.title}`,
-        description: `تم تحديث كائن المعرفة والقيود المرجعية وفق المصنف.`,
-        variant: "info",
-      });
     }
-  }, [toast]);
+  }, []);
 
   // Handle manual text changes
   const setText = useCallback((newText: string) => {
