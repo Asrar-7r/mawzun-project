@@ -12,7 +12,6 @@ function Crumb({ children }: { children: React.ReactNode }) {
 
 export function TopBar() {
   const pathname = usePathname();
-  const isDocs = pathname === "/docs" || pathname.startsWith("/docs/");
   const current = stageFromPath(pathname);
 
   return (
@@ -46,17 +45,11 @@ export function TopBar() {
         >
           <Crumb>موزون</Crumb>
           <Icon name="chevron_left" className="text-sm text-outline" />
-          {isDocs ? (
-            <span className="font-semibold text-primary">مركز التوثيق</span>
-          ) : (
-            <>
-              <Crumb>مساحة العمل</Crumb>
-              <Icon name="chevron_left" className="text-sm text-outline" />
-              <span className="font-semibold text-primary">
-                {current.ordinal} {current.title}
-              </span>
-            </>
-          )}
+          <Crumb>مساحة العمل</Crumb>
+          <Icon name="chevron_left" className="text-sm text-outline" />
+          <span className="font-semibold text-primary">
+            {current.ordinal} {current.title}
+          </span>
         </div>
       </div>
 

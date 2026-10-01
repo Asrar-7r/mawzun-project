@@ -54,12 +54,10 @@ The full documentation lives in [`docs/`](./docs) and is also rendered in-app at
 for the complete map of the docs.
 
 - `docs/getting-started/` — installation, project structure and scripts
-- `docs/architecture/` — overview, routing & stages, design system, components, docs engine
+- `docs/architecture/` — overview, routing & stages, design system, components
 - `docs/workflow/` — the six-stage audit pipeline and the semantic-guard principle
 - `docs/reference/` — code conventions and the bilingual glossary
 - `docs/adr/` — architecture decision records
-
-Validate the docs with `bun run docs:check` (front-matter, ordering and internal links).
 
 ## Learn More
 

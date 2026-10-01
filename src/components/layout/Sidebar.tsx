@@ -132,13 +132,17 @@ export function Sidebar() {
           <p className={cx(t.bodySm, "leading-relaxed text-on-surface-variant")}>
             الحوكمة اللغوية متوافقة مع مراجع المعتمد الشرعي.
           </p>
-          <div className="flex items-center justify-between pt-space-xs">
+          <Link
+            href="/docs"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-between rounded-lg pt-space-xs transition-colors hover:text-primary-container"
+          >
             <span className={cx(t.labelSm, "inline-flex items-center gap-1 text-primary")}>
               <Icon name="description" className="text-sm" />
               دليل الاستخدام والتوثيق
             </span>
             <Icon name="arrow_back" className="text-sm text-outline" />
-          </div>
+          </Link>
         </div>
       </aside>
     </>
