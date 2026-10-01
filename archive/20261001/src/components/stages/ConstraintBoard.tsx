@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Card } from "@/components/ui/Card";
 import { Icon } from "@/components/ui/Icon";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { cx } from "@/lib/cx";
@@ -80,9 +81,7 @@ const COMPLIANCE_METRICS = [
   { label: "معامل حظر الهلوسة", value: "0.00 انحراف", percent: 100 },
   { label: "الربط الشرعي المباشر", value: "99.8%", percent: 99.8 },
   { label: "التوافق مع المعايير الفقهية", value: "مطابق قطعيًا", percent: 100 },
-] as const;
-
-export function ConstraintBoard() {
+] as const;export function ConstraintBoard() {
   const [selected, setSelected] = useState<readonly string[]>(CONSTRAINTS.map((c) => c.id));
 
   const activeCount = selected.length;

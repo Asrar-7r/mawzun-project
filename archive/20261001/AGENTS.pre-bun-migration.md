@@ -21,9 +21,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   - Remove a package: `bun remove <pkg>`
   - Run scripts: `bun run <script>`, or directly `bun dev`, `bun build`, `bun lint`
   - Execute tools: `bunx <tool>` instead of `npx`
-- The reference lockfile is `bun.lock` (committed). Never create or update `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml`.
-- The legacy npm `package-lock.json` was removed during the Bun migration (tag `pre-chore-bun-migration-2026-10-01`, snapshot at `archive/20261001/package-lock.json`) and replaced by `bun.lock` generated with `bun install`.
-- Enforcement: `package.json` declares `"packageManager": "bun@1.4.2"` and the `preinstall` guard `scripts/ensure-bun.mjs` aborts any dependency installation started by `npm`, `yarn` or `pnpm`.
+- The reference lockfile is `bun.lock` (or `bun.lockb` when needed). Do not create or update `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml`.
+- A legacy npm `package-lock.json` currently exists: on the first task that touches dependencies, create a tag and archive the file, then delete it and reinstall via `bun install` to produce `bun.lock`.
 
 ## 2) Branches and the `main` branch
 

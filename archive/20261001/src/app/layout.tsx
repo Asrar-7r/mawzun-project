@@ -30,11 +30,7 @@ export default function RootLayout(props: LayoutProps<"/">) {
       className={`${plexArabic.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <head>
-        {/*
-          Material Symbols is an icon font, so it is not available through
-          next/font and has to be loaded with a plain stylesheet link.
-        */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        {/* Material Symbols is an icon font, not available via next/font. */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
