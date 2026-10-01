@@ -11,7 +11,7 @@ import { useWorkflow } from "@/context/WorkflowContext";
 
 interface SearchResult {
   id: string;
-  category: "المراحل" | "المتون المرجعية" | "القواعد والضوابط" | "التوثيق";
+  category: "المراحل" | "المتون المرجعية" | "القواعد والضوابط";
   title: string;
   subtitle: string;
   icon: string;
@@ -106,27 +106,6 @@ export function SearchModal({
         icon: "balance",
         action: () => {
           router.push("/03-constraints");
-          onClose();
-        },
-      });
-    });
-
-    // Docs
-    const docs = [
-      { title: "دليل التثبيت والتهيئة", slug: "getting-started/installation" },
-      { title: "هيكلية ومخطط المشروع", slug: "getting-started/project-structure" },
-      { title: "ميثاق الأمان الدلالي والمعايير", slug: "architecture/semantic-guard" },
-    ];
-
-    docs.forEach((doc, idx) => {
-      list.push({
-        id: `doc-${idx}`,
-        category: "التوثيق",
-        title: doc.title,
-        subtitle: `docs/${doc.slug}`,
-        icon: "description",
-        action: () => {
-          router.push(`/docs/${doc.slug}`);
           onClose();
         },
       });
