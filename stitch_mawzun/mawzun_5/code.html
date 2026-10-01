@@ -1,0 +1,414 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;font-family:'IBM Plex Sans Arabic',sans-serif;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-fixed":"#331200","surface-variant":"#d3e4fe","secondary-fixed-dim":"#bcc7de","surface-container-low":"#eff4ff","primary-fixed":"#9cf2e8","on-primary":"#ffffff","surface":"#f8f9ff","on-tertiary-fixed-variant":"#763300","error-container":"#ffdad6","secondary":"#545f73","tertiary":"#863b00","secondary-fixed":"#d8e3fb","on-secondary-fixed-variant":"#3c475a","on-error-container":"#93000a","surface-container-high":"#dce9ff","secondary-container":"#d5e0f8","surface-container-highest":"#d3e4fe","on-background":"#0b1c30","surface-dim":"#cbdbf5","on-tertiary-container":"#ffe4d7","on-secondary-fixed":"#111c2d","primary-fixed-dim":"#80d5cb","outline":"#6e7977","inverse-surface":"#213145","outline-variant":"#bdc9c6","on-surface":"#0b1c30","on-secondary-container":"#586377","primary":"#005c55","tertiary-fixed":"#ffdbca","inverse-on-surface":"#eaf1ff","surface-container-lowest":"#ffffff","on-secondary":"#ffffff","on-primary-fixed-variant":"#00504a","on-surface-variant":"#3e4947","surface-container":"#e5eeff","on-primary-fixed":"#00201d","surface-tint":"#006a63","on-tertiary":"#ffffff","inverse-primary":"#80d5cb","tertiary-fixed-dim":"#ffb68e","primary-container":"#0f766e","background":"#f8f9ff","on-error":"#ffffff","surface-bright":"#f8f9ff","error":"#ba1a1a","on-primary-container":"#a3faef","tertiary-container":"#ac4d01"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem",gutter:"1.5rem","space-xs":"0.25rem","space-xl":"2.5rem","space-md":"1rem","space-lg":"1.5rem",margin:"2rem"},fontFamily:{"code-sm":["JetBrains Mono"],"body-lg":["IBM Plex Sans"],"label-md":["IBM Plex Sans"],"body-md":["IBM Plex Sans"],"body-sm":["IBM Plex Sans"],"headline-sm":["IBM Plex Sans"],"headline-xl":["IBM Plex Sans"],"label-sm":["IBM Plex Sans"],"headline-lg":["IBM Plex Sans"]},fontSize:{"code-sm":["12px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"26px",letterSpacing:"0em",fontWeight:"400"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"500"}],"body-md":["14px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"400"}],"headline-sm":["18px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-xl":["32px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"headline-lg":["24px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}]}}}};</script></head><body class="bg-surface text-on-surface antialiased"><aside class="fixed right-0 top-0 bottom-0 w-64 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><img alt="شعار موزون Mawzun Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UFHIaZrC0rvCCmW8_nj9nCoaW7UldJUR3rx60h6coicMSBaFtV3DvOh0KTLAvYmHPrXK0wD_Wu_VZ83-MXAvZj0fbFZdDvZUtQqYqo-3Pb5tDPpl4epE3xENsuA-6c571oIA6pgcC0nV8_u2yYSDOzJZ51WVLjREPVP4AD-7zWeyYL7N-M0PDHU8X-NGt9iRW87p0r4ITwxwOY5sSh0naAG27FQCS9CclAhIW0DeXPKkcrMaKHFI1ht8g"><div class="flex flex-col pr-space-xs"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">موزون</span><span class="font-code-sm text-code-sm text-secondary bg-surface-container px-space-xs py-0.5 rounded text-[10px]">v2.4</span></div><span class="font-label-sm text-label-sm text-on-surface-variant font-normal">طبقة الأمان الدلالي</span></div></div><div class="px-space-md py-space-sm"><div class="flex items-center justify-between px-space-sm py-space-xs bg-surface-container-low rounded-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-base">verified_user</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">المحرك الدلالي</span></div><span class="font-code-sm text-code-sm text-primary-container bg-primary-fixed/40 px-1.5 py-0.5 rounded text-[11px]">نشط</span></div></div><nav class="px-space-sm mt-space-xs space-y-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-sm"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-primary hover:bg-surface-container transition-colors group" data-path="text-input" href="#">
+            <div class="flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-lg text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              <span class="font-body-md text-body-md font-medium">إدخال النص</span>
+            </div>
+            <span class="font-code-sm text-code-sm text-primary font-semibold">مكتمل</span>
+          </a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary-container font-semibold shadow-sm transition-colors group" data-path="analysis" href="#">
+            <div class="flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-lg text-on-primary-container">travel_explore</span>
+              <span class="font-body-md text-body-md">التحليل</span>
+            </div>
+            <span class="font-code-sm text-code-sm text-on-primary-container bg-primary/20 px-1.5 py-0.5 rounded text-[11px]">02</span>
+          </a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors group" data-path="constraints" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-lg">rule</span><span class="font-body-md text-body-md">القيود</span></div><span class="font-code-sm text-code-sm text-outline group-hover:text-on-surface">03</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors group" data-path="transformation" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-lg">transform</span><span class="font-body-md text-body-md">التحويل</span></div><span class="font-code-sm text-code-sm text-outline group-hover:text-on-surface">04</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors group" data-path="audit" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-lg">fact_check</span><span class="font-body-md text-body-md">الفحص</span></div><span class="font-code-sm text-code-sm text-outline group-hover:text-on-surface">05</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors group" data-path="results" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-lg">verified</span><span class="font-body-md text-body-md">النتيجة</span></div><span class="font-code-sm text-code-sm text-outline group-hover:text-on-surface">06</span></a></nav></div><div class="p-space-md bg-surface-container-low/50 m-space-sm rounded-xl flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">النظام الدلالي: نشط ومحمي</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">الحوكمة اللغوية متوافقة مع مراجع المعتمد الشرعي.</p><div class="pt-space-xs flex items-center justify-between"><a class="font-label-sm text-label-sm text-primary hover:text-primary-container inline-flex items-center gap-1" data-path="docs" href="#"><span class="material-symbols-outlined text-sm">description</span><span class="">دليل الاستخدام والتوثيق</span></a><span class="material-symbols-outlined text-outline text-sm">arrow_back</span></div></div></aside><div class="pr-64"><header class="fixed top-0 right-64 left-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md"><span class="hover:text-on-surface transition-colors">موزون</span><span class="material-symbols-outlined text-sm text-outline">chevron_left</span><span class="hover:text-on-surface transition-colors">مساحة العمل</span><span class="material-symbols-outlined text-sm text-outline">chevron_left</span><span class="text-primary font-semibold">التحليل واستخلاص البنية</span></div><div class="h-4 w-px bg-surface-container-high hidden md:block"></div><div class="hidden md:flex items-center gap-1.5 px-space-sm py-1 bg-surface-container rounded-full text-secondary font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="">البيئة الإنتاجية</span><span class="material-symbols-outlined text-xs text-outline">unfold_more</span></div></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center bg-surface-container-low rounded-lg px-space-sm py-1.5 gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-base text-outline">search</span><span class="font-body-sm text-body-sm text-outline">بحث في المستودع الدلالي...</span><kbd class="font-code-sm text-code-sm bg-surface-container-lowest px-1 rounded text-outline text-[10px]">⌘K</kbd></div><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors relative"><span class="material-symbols-outlined text-lg">notifications</span><span class="absolute top-2 left-2 w-2 h-2 bg-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span></button><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-lg">tune</span></button></div></header><main class="w-full pt-16 bg-surface min-h-screen px-gutter pb-margin"><div class="flex flex-col w-full">
+<script>
+    (function syncSidebar() {
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        const path = link.getAttribute('data-path');
+        if (path === 'text-input') {
+          link.className = 'flex items-center justify-between px-space-md py-space-sm rounded-lg text-primary hover:bg-surface-container transition-colors group';
+          link.innerHTML = `
+            <div class="flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-lg text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              <span class="font-body-md text-body-md font-medium">إدخال النص</span>
+            </div>
+            <span class="font-code-sm text-code-sm text-primary font-semibold">مكتمل</span>
+          `;
+        } else if (path === 'analysis') {
+          link.className = 'flex items-center justify-between px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary-container font-semibold shadow-sm transition-colors group';
+          link.innerHTML = `
+            <div class="flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-lg text-on-primary-container">travel_explore</span>
+              <span class="font-body-md text-body-md">التحليل</span>
+            </div>
+            <span class="font-code-sm text-code-sm text-on-primary-container bg-primary/20 px-1.5 py-0.5 rounded text-[11px]">02</span>
+          `;
+        } else {
+          link.className = 'flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors group';
+        }
+      });
+
+      const breadcrumbCurrent = document.querySelector('header span.text-primary.font-semibold');
+      if (breadcrumbCurrent) {
+        breadcrumbCurrent.textContent = 'التحليل واستخلاص البنية';
+      }
+    })();
+  </script>
+<!-- Flow Pill & Editorial Header -->
+<div class="flex flex-col gap-space-xs mb-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="">المرحلة 02 • التحليل الدلالي واستخلاص البنية</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded">Semantic Engine v2.4</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mt-space-xs">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">تحليل المحتوى</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">يحلل Mawzun النص تلقائيًا ويستخرج العناصر الدلالية التأسيسية تمهيدًا لصياغة القيود.</p>
+</div>
+<div class="hidden lg:flex items-center gap-2 bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">مستوى التوافق العقدي:</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">100% (معتمد)</span>
+</div>
+</div>
+<!-- Visual Story Pipeline Track -->
+<div class="mt-space-md bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm w-full md:w-auto px-space-sm py-1.5 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-base">format_quote</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">النص المدخل</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold mr-auto md:mr-1">✓</span>
+</div>
+<div class="flex items-center justify-center text-outline-variant w-full md:w-auto">
+<span class="material-symbols-outlined text-sm hidden md:inline">arrow_back</span>
+<span class="material-symbols-outlined text-sm md:hidden">arrow_downward</span>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto px-space-sm py-1.5 rounded-lg bg-primary-fixed/30 text-on-primary-fixed-variant ring-1 ring-primary/20">
+<span class="material-symbols-outlined text-primary text-base">psychology</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">الفهم الدلالي التلقائي</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping mr-auto md:mr-1"></span>
+</div>
+<div class="flex items-center justify-center text-outline-variant w-full md:w-auto">
+<span class="material-symbols-outlined text-sm hidden md:inline">arrow_back</span>
+<span class="material-symbols-outlined text-sm md:hidden">arrow_downward</span>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto px-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-outline text-base">account_tree</span>
+<span class="font-label-sm text-label-sm font-medium">كائن المعرفة الموزون (Knowledge Object)</span>
+<span class="font-code-sm text-code-sm text-outline mr-auto md:mr-1">03</span>
+</div>
+</div>
+</div>
+<!-- Primary Content Grid (2 Columns: Source Card + Semantic Graph) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-lg">
+<!-- Source Text Card (Col 7) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-lg">verified</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">النص الأصلي المُعالج</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            مكتمل التحقق • مطابق للمتن المعتمد
+          </span>
+</div>
+<div class="py-space-lg px-space-md bg-surface rounded-xl my-space-xs relative overflow-hidden">
+<div class="absolute -left-6 -top-6 text-surface-container opacity-50 select-none pointer-events-none">
+<span class="material-symbols-outlined text-9xl">format_quote</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-on-surface font-semibold leading-relaxed tracking-tight text-right relative z-10">
+            «إنَّما الأعمالُ بالنِّيّاتِ، وإنَّما لِكُلِّ امرِئٍ ما نَوى.»
+          </p>
+</div>
+</div>
+<!-- Metadata Strip -->
+<div class="pt-space-md mt-space-md flex flex-wrap items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low/40 p-space-sm rounded-lg">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline">menu_book</span>
+<span class="text-on-surface font-medium">المصدر:</span>
+<span class="">صحيح البخاري (حديث 1)</span>
+</div>
+<div class="h-3 w-px bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline">shield</span>
+<span class="text-on-surface font-medium">درجة الدلالة:</span>
+<span class="text-primary font-semibold">قطعية الثبوت والدلالة</span>
+</div>
+<div class="h-3 w-px bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline">speed</span>
+<span class="font-code-sm text-code-sm text-secondary">140ms</span>
+</div>
+</div>
+</div>
+<!-- Knowledge Graph Preview Widget (Col 5) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-lg">schema</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">بنية كائن المعرفة (Knowledge Object)</span>
+</div>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">رسم بياني للعلاقات الدلالية المستخرجة تلقائيًا لتوجيه نماذج الذكاء الاصطناعي التوليدية.</p>
+<!-- Inline SVG Conceptual Semantic Graph -->
+<div class="my-space-md bg-surface p-space-md rounded-xl flex items-center justify-center">
+<svg class="w-full h-40 text-on-surface" fill="none" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+<!-- Connection Lines -->
+<path d="M 80 80 L 200 45" stroke="currentColor" stroke-dasharray="3 3" stroke-opacity="0.15" stroke-width="2"></path>
+<path d="M 80 80 L 200 115" stroke="currentColor" stroke-dasharray="3 3" stroke-opacity="0.15" stroke-width="2"></path>
+<path d="M 200 45 L 320 80" stroke="currentColor" stroke-opacity="0.25" stroke-width="2"></path>
+<path d="M 200 115 L 320 80" stroke="currentColor" stroke-opacity="0.25" stroke-width="2"></path>
+<!-- Node 1: Source Text -->
+<g class="cursor-pointer group">
+<rect fill="#e5eeff" height="50" rx="8" stroke="#0f766e" stroke-width="1.5" width="100" x="20" y="55"></rect>
+<text fill="#005c55" font-family="IBM Plex Sans" font-size="11" font-weight="700" text-anchor="middle" x="70" y="77">المتن النبوي</text>
+<text fill="#545f73" font-family="IBM Plex Sans" font-size="9" text-anchor="middle" x="70" y="93">الأعمال بالنيات</text>
+</g>
+<!-- Node 2: Cause/Concept -->
+<g class="cursor-pointer group">
+<rect fill="#ffffff" height="50" rx="8" stroke="#bdc9c6" stroke-width="1" width="100" x="150" y="20"></rect>
+<circle cx="165" cy="35" fill="#0f766e" r="4"></circle>
+<text fill="#0b1c30" font-family="IBM Plex Sans" font-size="11" font-weight="600" text-anchor="middle" x="200" y="42">الموضوع: النية</text>
+<text fill="#545f73" font-family="IBM Plex Sans" font-size="9" text-anchor="middle" x="200" y="58">مناط الصحة والقبول</text>
+</g>
+<!-- Node 3: Legal/Semantic Impact -->
+<g class="cursor-pointer group">
+<rect fill="#ffffff" height="50" rx="8" stroke="#bdc9c6" stroke-width="1" width="100" x="150" y="90"></rect>
+<circle cx="165" cy="105" fill="#863b00" r="4"></circle>
+<text fill="#0b1c30" font-family="IBM Plex Sans" font-size="11" font-weight="600" text-anchor="middle" x="200" y="112">العلة والمعلول</text>
+<text fill="#545f73" font-family="IBM Plex Sans" font-size="9" text-anchor="middle" x="200" y="128">ارتباط العمل بالقصد</text>
+</g>
+<!-- Node 4: Synthesis / Safe Output -->
+<g class="cursor-pointer group">
+<rect fill="#0f766e" height="50" rx="8" width="110" x="270" y="55"></rect>
+<text fill="#ffffff" font-family="IBM Plex Sans" font-size="11" font-weight="700" text-anchor="middle" x="325" y="77">الأثر والجزاء</text>
+<text fill="#a3faef" font-family="IBM Plex Sans" font-size="9" text-anchor="middle" x="325" y="93">لكل امرئ ما نوى</text>
+</g>
+</svg>
+</div>
+</div>
+<!-- Quick Graph Properties -->
+<div class="grid grid-cols-3 gap-space-xs text-center pt-space-xs">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="block font-label-sm text-label-sm text-secondary">عُقد المعرفة</span>
+<span class="font-code-sm text-code-sm text-on-surface font-bold">4 Nodes</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="block font-label-sm text-label-sm text-secondary">روابط التأصيل</span>
+<span class="font-code-sm text-code-sm text-on-surface font-bold">5 Edges</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="block font-label-sm text-label-sm text-secondary">الثقة الدلالية</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">0.998</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Extracted Semantic Structure Section -->
+<div class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">ما استخرجه Mawzun</h2>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">تحليل لغوي ودلالي عميق مبني على أصول المعاجم وضوابط المحتوى الإسلامي المعتمد.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low text-secondary hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="">تصفية العناصر</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low text-secondary hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-sm">code</span>
+<span class="">تصدير JSON-LD</span>
+</button>
+</div>
+</div>
+<!-- 4 Structured Synthesized Knowledge Cards (Read-Only) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Card 1: نوع المحتوى -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">menu_book</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-outline font-medium">تصنيف المتن والوعاء</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">نوع المحتوى</h3>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">auto_awesome</span>
+            مستخرج تلقائيًا
+          </span>
+</div>
+<div class="my-space-md p-space-md bg-surface-container-low rounded-lg">
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">حديث نبوي شريف</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">تمت مطابقة السند والمتن مع صحيح البخاري، الحديث الأول في باب بدء الوحي، برواية أمير المؤمنين عمر ن الخطاب.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="">مدقق آليًا ومطابق للمصنفات الحديثية</span>
+</div>
+
+</div>
+</div>
+<!-- Card 2: الموضوع -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">category</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-outline font-medium">المجال المقاصدي والفقهي</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">الموضوع</h3>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">auto_awesome</span>
+            مستخرج تلقائيًا
+          </span>
+</div>
+<div class="my-space-md p-space-md bg-surface-container-low rounded-lg">
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">النِّيَّة (الإخلاص والقصد)</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">يقع في أصل أبواب الفقه الإسلامي: تمييز العبادات عن العادات، وتمييز رتب العبادات بعضها عن بعض، وقاعدة الأمور بمقاصدها.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">hub</span>
+<span class="">تصنيف مقاصدي فقهي (العبادات والمعاملات)</span>
+</div>
+
+</div>
+</div>
+<!-- Card 3: الفكرة الأساسية -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl">link</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-outline font-medium">الارتباط المنطقي والسببي</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">الفكرة الأساسية</h3>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">auto_awesome</span>
+            مستخرج تلقائيًا
+          </span>
+</div>
+<div class="my-space-md p-space-md bg-surface-container-low rounded-lg">
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">الأعمال مرتبطة بالنيات صحةً وقبولاً</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">تحديد حصر جنس العمل المعتبر شرعًا بوجود نيته وقصده، بحيث لا يترتب ثواب أو حكم استحقاقي بغير عزم الإرادة القلبية.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-sm">balance</span>
+<span class="">رابط العلة بالمعلول ومقصد العمل الشرعي</span>
+</div>
+
+</div>
+</div>
+<!-- Card 4: المعنى الأساسي -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-outline font-medium">الاستحقاق والأثر التشريعي</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">المعنى الأساسي والأثر</h3>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-xs">auto_awesome</span>
+            مستخرج تلقائيًا
+          </span>
+</div>
+<div class="my-space-md p-space-md bg-surface-container-low rounded-lg">
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">لكل شخص ما نواه في الجزاء والمآل</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">دلالة فردية المسؤولية وتعين الأثر الأخروي والدنيوي على وفق النية الحقيقية الباطنة، وليس فقط القالب الصوري الظاهر للعمل.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span class="">دلالة الأثر والجزاء الأخروي والدنيوي الفردي</span>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Diagnostic Insight Box -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-2xl">policy</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">جاهزية التضمين والتحويل إلى قيود حوكمة</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          استكمل النظام استخراج محددات الدلالة دون أي تناقض مع المصادر التأسيسية. يمكنك الآن نقل كائن المعرفة إلى المرحلة الثالثة لبناء محددات الأمان التوليدي (Semantic Guardrails).
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0">
+
+</div>
+</div>
+<!-- Floating / Pinned RTL Bottom Action Bar -->
+<div class="sticky bottom-4 z-30 bg-surface-container-lowest/95 backdrop-blur-md rounded-xl p-space-md shadow-lg flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">تم استخراج 4 عناصر دلالية بنجاح</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded-full">جاهز للتقييد</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<a class="px-space-md py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5" data-path="text-input" href="#">
+<span class="material-symbols-outlined text-base">edit</span>
+<span class="">تعديل النص الأصلي</span>
+</a>
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary hover:text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5" onclick="recheckAnalysis(this)">
+<span class="material-symbols-outlined text-base">refresh</span>
+<span class="">إعادة تدقيق المعنى</span>
+</button>
+<a class="px-space-lg py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold transition-all shadow-sm flex items-center gap-2 group" data-path="constraints" href="#">
+<span class="">إنشاء القيود</span>
+<span class="material-symbols-outlined text-base group-hover:-translate-x-0.5 transition-transform">cloud_upload</span>
+</a>
+</div>
+</div>
+<script>
+    function recheckAnalysis(button) {
+      const originalText = button.innerHTML;
+      button.innerHTML = `
+        <span class="material-symbols-outlined text-base animate-spin">sync</span>
+        <span>جارٍ إعادة الفحص...</span>
+      `;
+      button.disabled = true;
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }, 900);
+    }
+  </script>
+</div></main></div>
+
+
+</body></html>
