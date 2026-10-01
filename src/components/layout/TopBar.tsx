@@ -69,7 +69,9 @@ export function TopBar() {
             <Crumb>مساحة العمل</Crumb>
             <Icon name="chevron_left" className="text-sm text-outline" />
             <span className="font-semibold text-primary">
-              {current.ordinal} {current.title}
+              {pathname === "/" || pathname === "/studio"
+                ? "الاستوديو الموحد (Gemma 4 & RAG)"
+                : `${current.ordinal} ${current.title}`}
             </span>
           </div>
         </div>

@@ -69,6 +69,45 @@ export function Sidebar() {
           </div>
 
           <nav aria-label="مراحل التدقيق" className="mt-space-xs space-y-1 px-space-sm">
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              aria-current={pathname === "/" || pathname === "/studio" ? "page" : undefined}
+              className={cx(
+                "group flex items-center justify-between rounded-xl px-space-md py-2.5 transition-all mb-2",
+                pathname === "/" || pathname === "/studio"
+                  ? "bg-primary font-bold text-on-primary shadow-sm"
+                  : "bg-surface-container/60 text-on-surface hover:bg-surface-container",
+              )}
+            >
+              <span className="flex items-center gap-space-sm">
+                <Icon
+                  name="auto_fix_high"
+                  className={cx(
+                    "text-lg",
+                    pathname === "/" || pathname === "/studio"
+                      ? "text-on-primary"
+                      : "text-primary",
+                  )}
+                />
+                <span className={t.labelSm}>الاستوديو الموحد (AI & RAG)</span>
+              </span>
+              <span
+                className={cx(
+                  "rounded px-1.5 py-0.5 text-[10px] font-bold font-mono",
+                  pathname === "/" || pathname === "/studio"
+                    ? "bg-on-primary/20 text-on-primary"
+                    : "bg-primary-fixed/50 text-primary-container",
+                )}
+              >
+                Gemma 4
+              </span>
+            </Link>
+
+            <div className="flex items-center gap-2 px-2 py-1 text-[11px] font-semibold text-outline">
+              <span>المسار الستّي الكامل</span>
+              <div className="h-px flex-1 bg-outline-variant/30" />
+            </div>
             {STAGES.map((stage) => {
               const status = stageStatus(stage, current);
               const isActive = status === "active";

@@ -7,6 +7,15 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "ai": {
+    "binding": "AI"
+  },
+  "vectorize": [
+    {
+      "binding": "VECTORIZE",
+      "index_name": "mawzun-hadith-index"
+    }
+  ],
   "observability": {
     "enabled": true
   }
